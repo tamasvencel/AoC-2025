@@ -1,5 +1,3 @@
-from collections import Counter
-
 def is_invalid(num: int) -> bool:
     s = str(num)
     return s in (s + s)[1:-1]
