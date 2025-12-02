@@ -1,13 +1,28 @@
-def part1():
-    with open("inputs/day_02.txt") as f:
-        data = f.read().strip()
-    pass
+from collections import Counter
 
-def part2():
-    with open("inputs/day_02.txt") as f:
-        data = f.read().strip()
-    pass
+def is_invalid(num: int) -> bool:
+    s = str(num)
+    return s in (s + s)[1:-1]
+
+def get_invalid_ids():
+    with open("inputs/id_ranges.txt") as f:
+        id_ranges = f.read().split(",")
+        
+    invalid_ids_sum = 0
+    
+    for id_range in id_ranges:
+        start, end = id_range.split("-")
+        
+        # part 1
+        # for num in range(int(start), int(end)+1):
+        #     if str(num)[:len(str(num))//2] == str(num)[len(str(num))//2:]:
+        #         invalid_ids_sum += num
+        
+        for num in range(int(start), int(end)+1):
+            if is_invalid(num):
+                invalid_ids_sum += num
+                
+    print(invalid_ids_sum)
 
 if __name__ == "__main__":
-    print(f"Part 1: {part1()}")
-    print(f"Part 2: {part2()}")
+    get_invalid_ids()
