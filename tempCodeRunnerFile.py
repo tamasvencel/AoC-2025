@@ -1,1 +1,0 @@
-and bool(joltage_ratings_stack)
